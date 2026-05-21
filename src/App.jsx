@@ -16,7 +16,6 @@ export default function App() {
   const [soundEnabled, setSoundEnabled] = useState(true)
   const { playClick, playWhoosh, playDing } = useSound(soundEnabled)
 
-  // Apply dark/light class to html element
   useEffect(() => {
     const root = document.documentElement
     if (darkMode) {
@@ -25,26 +24,6 @@ export default function App() {
       root.classList.remove('dark')
     }
   }, [darkMode])
-
-  // Play Tron intro on first mouse move or touch — feels like page load
-  // (browsers require a user gesture before audio, mousemove counts)
-  // useEffect(() => {
-  //   if (!soundEnabled) return
-  //   let played = false
-  //   const handleFirstMove = () => {
-  //     if (played) return
-  //     played = true
-  //     playTronIntro()
-  //     window.removeEventListener('mousemove', handleFirstMove)
-  //     window.removeEventListener('touchstart', handleFirstMove)
-  //   }
-  //   window.addEventListener('mousemove', handleFirstMove)
-  //   window.addEventListener('touchstart', handleFirstMove)
-  //   return () => {
-  //     window.removeEventListener('mousemove', handleFirstMove)
-  //     window.removeEventListener('touchstart', handleFirstMove)
-  //   }
-  // }, [soundEnabled])
 
   return (
     <div className="min-h-screen bg-main text-primary">

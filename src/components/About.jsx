@@ -107,7 +107,7 @@ export default function About({ playClick }) {
             </div>
           </div>
         </motion.div>
-        <NextSection targetId="skills" playClick={playClick} />
+        <NextSection targetId="projects" playClick={playClick} />
       </div>
     </section>
   )

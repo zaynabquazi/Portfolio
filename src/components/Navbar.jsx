@@ -46,9 +46,8 @@ export default function Navbar({ darkMode, setDarkMode, soundEnabled, setSoundEn
           {navLinks.map((link) => (
             <motion.button
               key={link}
-              whileHover={{ opacity: 1 }}
               onClick={() => handleNav(link)}
-              className="text-sm font-medium transition-opacity duration-200"
+              className="text-sm font-medium transition-all duration-200"
               style={{ color: 'var(--text-secondary)', opacity: 0.8 }}
               onMouseEnter={e => e.target.style.color = 'var(--text-primary)'}
               onMouseLeave={e => e.target.style.color = 'var(--text-secondary)'}
@@ -60,7 +59,6 @@ export default function Navbar({ darkMode, setDarkMode, soundEnabled, setSoundEn
 
         {/* Controls */}
         <div className="flex items-center gap-3">
-          {/* Sound Toggle */}
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -72,7 +70,6 @@ export default function Navbar({ darkMode, setDarkMode, soundEnabled, setSoundEn
             {soundEnabled ? '🔊' : '🔇'}
           </motion.button>
 
-          {/* Dark Mode Toggle */}
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -108,7 +105,7 @@ export default function Navbar({ darkMode, setDarkMode, soundEnabled, setSoundEn
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-main"
+            className="md:hidden glass border-t"
             style={{ borderColor: 'var(--border)' }}
           >
             <div className="px-6 py-4 flex flex-col gap-4">

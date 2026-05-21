@@ -183,7 +183,8 @@ function TronCard({ project, index, inView, playClick }) {
   )
 }
 
-export default function Projects({ playClick }) {  const ref = useRef(null)
+export default function Projects({ playClick }) {
+  const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
