@@ -4,17 +4,31 @@ export default function Cursor() {
   const [pos, setPos] = useState({ x: -100, y: -100 })
   const [hovering, setHovering] = useState(false)
   const [visible, setVisible] = useState(false)
+  const [isDark, setIsDark] = useState(true)
 
   useEffect(() => {
     if (window.matchMedia('(hover: none)').matches) return
 
     document.documentElement.style.cursor = 'none'
 
-    // Force hide cursor on all elements including interactive ones
+    // Force hide cursor on ALL elements
     const style = document.createElement('style')
     style.id = 'cursor-none'
-    style.textContent = '*, *:hover { cursor: none !important; }'
+    style.textContent = `
+      *, *::before, *::after, *:hover, *:focus, *:active,
+      a, a:hover, button, button:hover, [role="button"],
+      input, select, textarea, label {
+        cursor: none !important;
+      }
+    `
     document.head.appendChild(style)
+
+    // Watch for dark/light mode changes
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    })
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    setIsDark(document.documentElement.classList.contains('dark'))
 
     const onMove = (e) => {
       setPos({ x: e.clientX, y: e.clientY })
@@ -39,6 +53,7 @@ export default function Cursor() {
       document.documentElement.style.cursor = ''
       const el = document.getElementById('cursor-none')
       if (el) el.remove()
+      observer.disconnect()
       window.removeEventListener('mousemove', onMove)
       window.removeEventListener('mouseleave', onLeave)
       window.removeEventListener('mouseenter', onEnter)
@@ -51,6 +66,17 @@ export default function Cursor() {
     return null
   }
 
+  const dotColor = isDark ? 'white' : '#1d1d1f'
+  const glowColor = isDark
+    ? 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)'
+    : 'radial-gradient(circle, rgba(0,0,0,0.1) 0%, transparent 70%)'
+  const shadowHover = isDark
+    ? '0 0 10px 3px rgba(255,255,255,0.6), 0 0 24px 6px rgba(255,255,255,0.2)'
+    : '0 0 10px 3px rgba(0,0,0,0.3), 0 0 24px 6px rgba(0,0,0,0.1)'
+  const shadowDefault = isDark
+    ? '0 0 8px 2px rgba(255,255,255,0.4), 0 0 16px 3px rgba(255,255,255,0.15)'
+    : '0 0 8px 2px rgba(0,0,0,0.2), 0 0 16px 3px rgba(0,0,0,0.08)'
+
   return (
     <div
       className="fixed pointer-events-none z-[9999]"
@@ -62,7 +88,7 @@ export default function Cursor() {
         transition: 'opacity 0.3s ease',
       }}
     >
-      {/* Outer glow — soft and diffuse */}
+      {/* Outer glow */}
       <div style={{
         position: 'absolute',
         top: '50%',
@@ -71,11 +97,11 @@ export default function Cursor() {
         width: hovering ? '36px' : '26px',
         height: hovering ? '36px' : '26px',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)',
+        background: glowColor,
         filter: 'blur(4px)',
-        transition: 'width 0.2s ease, height 0.2s ease',
+        transition: 'width 0.2s ease, height 0.2s ease, background 0.3s ease',
       }} />
-      {/* Inner dot — sharp and clean */}
+      {/* Inner dot */}
       <div style={{
         position: 'absolute',
         top: '50%',
@@ -84,11 +110,9 @@ export default function Cursor() {
         width: hovering ? '7px' : '6px',
         height: hovering ? '7px' : '6px',
         borderRadius: '50%',
-        background: 'white',
-        boxShadow: hovering
-          ? '0 0 10px 3px rgba(255,255,255,0.6), 0 0 24px 6px rgba(255,255,255,0.2)'
-          : '0 0 8px 2px rgba(255,255,255,0.4), 0 0 16px 3px rgba(255,255,255,0.15)',
-        transition: 'width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease',
+        background: dotColor,
+        boxShadow: hovering ? shadowHover : shadowDefault,
+        transition: 'width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease, background 0.3s ease',
       }} />
     </div>
   )

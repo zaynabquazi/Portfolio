@@ -73,7 +73,7 @@ export default function Navbar({ darkMode, setDarkMode, soundEnabled, setSoundEn
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={() => { setDarkMode(!darkMode); playDing(!darkMode ? 260 : 1100) }}
+            onClick={() => { setDarkMode(!darkMode); playDing(!darkMode ? 260 : 500) }}
             className="w-9 h-9 rounded-full glass flex items-center justify-center text-sm"
             style={{ color: 'var(--text-secondary)' }}
             title={darkMode ? 'Light mode' : 'Dark mode'}

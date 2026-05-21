@@ -53,7 +53,7 @@ const photos = [
   },
   {
     src: prospaImg,
-    title: 'Prospa',
+    title: 'Prospa b2b Josh Baker',
     caption: 'Low-light concert photograph documenting a back-to-back set between Prospa and Josh Baker, emphasizing monochrome lighting, composition, and live energy.',
   },
 ]

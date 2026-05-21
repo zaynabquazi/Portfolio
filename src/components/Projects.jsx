@@ -15,6 +15,16 @@ const projects = [
     id: 'MKT-001',
   },
   {
+    title: 'Zaya',
+    description:
+      'A Chrome extension designed to boost student productivity while supporting mental health. Combines focus tools with wellness check-ins to help students stay on track without burning out.',
+    tags: ['Chrome Extension', 'JavaScript', 'Productivity', 'Mental Health'],
+    link: 'https://github.com/zaynabquazi/Zaya',
+    status: 'IN DEV',
+    icon: '🧠',
+    id: 'EXT-003',
+  },
+  {
     title: 'Light Sculpture System',
     description:
       'An interactive light sculpture built in C++ on Arduino, integrating hardware and software across coding, physics, and CAD design. Programmed microcontroller logic for dynamic lighting with under 50ms real-time latency.',
