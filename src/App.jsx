@@ -38,7 +38,6 @@ export default function App() {
       />
       <Hero playClick={playClick} />
       <About playClick={playClick} />
-      <Skills playClick={playClick} />
       <Projects playClick={playClick} />
       <Experience playClick={playClick} />
       <ArtMusic playClick={playClick} />

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const navLinks = ['About', 'Skills', 'Projects', 'Experience', 'Art & Music', 'Contact']
+const navLinks = ['About', 'Projects', 'Experience', 'Art & Music', 'Contact']
 
 export default function Navbar({ darkMode, setDarkMode, soundEnabled, setSoundEnabled, playClick, playDing }) {
   const [scrolled, setScrolled] = useState(false)
