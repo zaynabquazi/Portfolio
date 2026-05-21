@@ -69,14 +69,6 @@ export default function Hero({ playClick }) {
 
         <motion.p
           variants={item}
-          className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-4 px-2"
-          style={{ color: 'var(--text-secondary)' }}
-        >
-          Building technology that feels intuitive, useful, and genuinely helpful.
-        </motion.p>
-
-        <motion.p
-          variants={item}
           className="text-xs sm:text-sm max-w-xl mx-auto leading-relaxed mb-8 sm:mb-12 px-2"
           style={{ color: 'var(--text-secondary)', opacity: 0.6 }}
         >

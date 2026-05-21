@@ -108,7 +108,7 @@ export default function Experience({ playClick }) {
             ))}
           </div>
         </motion.div>
-        <NextSection targetId="art-&-music" playClick={playClick} />
+        <NextSection targetId="art-music" playClick={playClick} />
       </div>
     </section>
   )

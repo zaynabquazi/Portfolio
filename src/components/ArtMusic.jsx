@@ -213,7 +213,7 @@ export default function ArtMusic({ playClick }) {
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="art-&-music" className="py-20 sm:py-32 px-4 sm:px-6" style={{ background: 'var(--bg-secondary)' }}>
+    <section id="art-music" className="py-20 sm:py-32 px-4 sm:px-6" style={{ background: 'var(--bg-secondary)' }}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}
