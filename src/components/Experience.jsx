@@ -26,6 +26,17 @@ const experiences = [
       'Evaluated and onboarded 2–3 digital tools, synthesizing findings into recommendations that saved 3+ hours per week.',
     ]
   },
+  {
+    company: 'Rocket & Aerospace Club',
+    role: 'Vice President',
+    period: '2023 – 2025',
+    location: 'Santa Barbara, CA',
+    link: 'https://sbccaerospaceclub.weebly.com/',
+    bullets: [
+      'Coordinated club activities, engineering-focused initiatives, and student collaboration within a hands-on aerospace and technology environment.',
+      'Contributed to team organization, communication, and outreach efforts supporting STEM engagement.',
+    ]
+  },
 ]
 
 export default function Experience({ playClick }) {
@@ -80,7 +91,11 @@ export default function Experience({ playClick }) {
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-2 mb-1">
                   <div>
                     <h3 className="text-base sm:text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>
-                      {exp.company}
+                      {exp.link ? (
+                        <a href={exp.link} target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-70" style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '4px', textDecorationColor: 'var(--text-secondary)' }}>
+                          {exp.company} ↗
+                        </a>
+                      ) : exp.company}
                     </h3>
                     <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
                       {exp.role}
