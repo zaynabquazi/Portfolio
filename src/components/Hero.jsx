@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import resumePDF from '../assets/resume.pdf'
 
 const container = {
   hidden: { opacity: 0 },
@@ -99,6 +100,18 @@ export default function Hero({ playClick }) {
             style={{ color: 'var(--text-primary)' }}
           >
             LinkedIn
+          </motion.a>
+
+          <motion.a
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            href={resumePDF}
+            download="Zaynab-Quazi-Resume.pdf"
+            onClick={playClick}
+            className="w-full sm:w-auto px-8 py-3 rounded-full text-sm font-medium glass transition-all duration-200 text-center"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            Resume ↓
           </motion.a>
         </motion.div>
       </motion.div>
